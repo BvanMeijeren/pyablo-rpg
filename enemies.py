@@ -6,7 +6,7 @@ def create_skeleton(mainchar, weapon):
     skeleton = Character(
         name = 'Broken Skeleton',
         level = mainchar.level,
-        xp =7,
+        xp =50,
         hitpoints = random.randint(18,30), 
         species = 'Skeleton',
         fire_def=0,
@@ -23,7 +23,7 @@ def create_ice_elemental(mainchar,weapon):
     ice_elemental = Character(
         name = 'Ice Elemental',
         level = mainchar.level,
-        xp = 10,
+        xp = 50,
         hitpoints = random.randint(18,30), 
         species = 'Elemental',
         fire_def=0,
@@ -40,7 +40,7 @@ def create_goblin(mainchar,weapon):
     goblin = Character(
         name = 'Goblin Intern',
         level = 1,
-        xp = 6,
+        xp = 50,
         hitpoints = 25, 
         species = 'Goblin',
         fire_def=0,
