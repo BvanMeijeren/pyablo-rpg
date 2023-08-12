@@ -4,8 +4,10 @@ from weapons import *
 # Character creation
 def character_creation():
     print('Choose your hero by answering the following questions:')
-    name = input('What is your hero\'s name?')
-    species = input('Are you an human, elf, dwarf')
+    print('What is your hero\'s name?')
+    name = input('> ')
+    print('Are you an human, elf, dwarf?')
+    species = input('> ')
 
     print('Creating character...')
     # character creation with base stats
@@ -17,6 +19,7 @@ def character_creation():
         fire_def =25, 
         ice_def=25, 
         level=1,
+        xp=0,
         enemy_damge=0)
 
     print('Character created!')
@@ -28,7 +31,7 @@ def create_starterweapon():
     weapontype = random.choice(weapontypes)
     starterweapon = Weapon(
         name = 'Noob ' + weapontype,
-        damage = 8,
+        damage = random.randint(8, 12),
         type = weapontype,
         critical_chance = 0.1,
         is_two_handed = False,
