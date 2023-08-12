@@ -5,7 +5,10 @@ keybindings = {
     '1': 'attack',
     '2': 'healing_potion',
     '3': 'defend',
-    'h': 'help'
+    'h': 'help',
+    'i': 'inventory',
+    'c': 'character_stats',
+    'e': 'inspect_enemy'
 }
 
 # all the first letters of the function names should be unique!
@@ -17,7 +20,7 @@ def healing_potion(mainchar,enemy,weapon):
 def attack(mainchar, enemy, weapon):
     enemy.hitpoints = enemy.hitpoints - weapon.damage 
     if enemy.hitpoints <=0:
-        print('You hit the ' + enemy.name + ' for ' + str(weapon.damage) )
+        print('You hit the ' + enemy.name + ' for ' + str(weapon.damage) + '.')
     else:
         print('You hit the ' + enemy.name + ' for ' + str(weapon.damage) + '! It has ' + str(enemy.hitpoints) + ' HP left.')
 
@@ -27,3 +30,13 @@ def defend(mainchar,enemy,weapon):
 def help(mainchar,enemy,weapon):
     print(keybindings)
 
+def inventory(mainchar,enemy,weapon):
+    print(mainchar.items)
+
+def character_stats(mainchar,enemy,weapon):
+    from pprint import pprint
+    pprint(vars(mainchar))
+
+def inspect_enemy(mainchar,enemy,weapon):
+    from pprint import pprint
+    pprint(vars(enemy))

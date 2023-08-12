@@ -7,7 +7,7 @@ from playeractions import *
 def encounter(mainchar, weapon, userinput):
 
     # determine enemy and set encounter game state
-    enemy = random.choice(enemies)
+    enemy = random.choice(enemies)(mainchar, weapon)
     encounter_ended = False
 
     # encounter intro + options
@@ -19,7 +19,8 @@ def encounter(mainchar, weapon, userinput):
     while encounter_ended == False:
         userinput = input('> ')
         # Player's turn
-        exec(keybindings[userinput]+'(mainchar, enemy, weapon)') # execute selected action
+        if userinput != 'q':
+            exec(keybindings[userinput]+'(mainchar, enemy, weapon)') # execute selected action
         # Check if enemy died
         if enemy.hitpoints <= 0:
             print(enemy.name + ' was slain! You venture on...')
@@ -28,8 +29,8 @@ def encounter(mainchar, weapon, userinput):
         # Enemy's turn
         if encounter_ended == False:
             mainchar.hitpoints = mainchar.hitpoints - enemy.enemy_damge
-            print(enemy.name + ' hit you for ' + str(enemy.enemy_damge) + ' damage. ' + str(mainchar.hitpoints) + '/' +
-                  enemy.hitpoints + '100 HP remaining.')
+            print(enemy.name + ' hit you for ' + str(round(enemy.enemy_damge)) + ' damage. ' + 
+                  str(round(mainchar.hitpoints)) + ' HP remaining.')
 
 
 # def encounter(mainchar, weapon, userinput):

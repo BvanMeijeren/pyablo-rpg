@@ -20,7 +20,9 @@ def character_creation():
         ice_def=25, 
         level=1,
         xp=0,
-        enemy_damge=0)
+        enemy_damge=0,
+        skills=[]
+        )
 
     print('Character created!')
     return mainchar

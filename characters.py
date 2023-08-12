@@ -11,6 +11,7 @@ class Character:
         self.electricity_def = electricity_def
         self.enemy_damge = enemy_damge # enemy attribute
         self.skills = skills
+        self.items = [] # hero's items
 
 
 # class Enemy(Character):
