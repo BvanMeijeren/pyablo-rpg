@@ -1,5 +1,6 @@
 from execute_subprocess import execute_python_file
 from encounters import *
+from level_up import *
 import os
 
 def game_engine(mainchar, weapon):
@@ -11,7 +12,12 @@ def game_engine(mainchar, weapon):
 
     while userinput != 'q':
         userinput = input('> ')
+
+        # Create encounter
         encounter(mainchar, weapon, userinput)
+
+        # Check if level up
+        level_up(mainchar)
         
 
     print('Exiting game...')
