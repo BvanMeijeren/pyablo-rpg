@@ -4,14 +4,14 @@
 enemy_actions = ['niffle', 'fireball', 'ice_shield']
 
 def niffle(mainchar,enemy,weapon):
-    print(enemy.name +' used Niffle! It hits you for ' + str(enemy.damage) + '.')
-    mainchar.hitpoints = mainchar.hitpoints - enemy.damage
+    print(enemy.name +' used Niffle! It hits you for ' + str(enemy.enemy_damage) + '.')
+    mainchar.hitpoints = mainchar.hitpoints - enemy.enemy_damage
 
 def fireball(mainchar,enemy,weapon):
-    print(enemy.name +' used Fireball! It hits you for ' + str(enemy.damage) + '.')
-    mainchar.hitpoints = mainchar.hitpoints - enemy.damage
+    print(enemy.name +' used Fireball! It hits you for ' + str(enemy.enemy_damage) + '.')
+    mainchar.hitpoints = mainchar.hitpoints - enemy.enemy_damage
 
 def ice_shield(mainchar,enemy,weapon):
     print(enemy.name +' used Ice Shield! Damage reduced for 20%.')
-    mainchar.hitpoints = mainchar.hitpoints - enemy.damage
+    mainchar.hitpoints = mainchar.hitpoints - enemy.enemy_damage
 

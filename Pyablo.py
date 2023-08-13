@@ -20,6 +20,7 @@ if x == 's':
 
     # Start up the game engine (main) with encounters
     game_engine(mainchar, starterweapon)
+
 else:
     print('Bye!')
 

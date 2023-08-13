@@ -1,6 +1,7 @@
 from execute_subprocess import execute_python_file
 from encounters import *
 from level_up import *
+from lootgenerator import *
 import os
 
 def game_engine(mainchar, weapon):
@@ -15,6 +16,9 @@ def game_engine(mainchar, weapon):
 
         # Create encounter
         encounter(mainchar, weapon, userinput)
+
+        # Loot
+        generate_loot(mainchar)
 
         # Check if level up
         level_up(mainchar)

@@ -1,4 +1,4 @@
-from Pyablo import mainchar
+from main import *
 
 # Check if level up
 def level_up(mainchar):

@@ -12,8 +12,9 @@ def create_skeleton(mainchar, weapon):
         fire_def=0,
         ice_def=20,
         electricity_def=40,
-        enemy_damge=weapon.damage * 0.5,
-        skills=[]
+        enemy_damage=weapon.damage * 0.5,
+        skills=[],
+        items={}
         )
     
     return skeleton
@@ -29,8 +30,9 @@ def create_ice_elemental(mainchar,weapon):
         fire_def=0,
         ice_def=80,
         electricity_def=40,
-        enemy_damge= weapon.damage*0.6,
-        skills=[]
+        enemy_damage= weapon.damage*0.6,
+        skills=[],
+        items={}
         )
     
     return ice_elemental
@@ -46,8 +48,9 @@ def create_goblin(mainchar,weapon):
         fire_def=0,
         ice_def=80,
         electricity_def=40,
-        enemy_damge=weapon.damage*0.4,
-        skills = ['niffle']
+        enemy_damage=weapon.damage*0.4,
+        skills = ['niffle'],
+        items={}
         )
     
     return goblin

@@ -1,3 +1,5 @@
+from weapons import *
+
 # To add a function: add a function like the others and add the keybinding
 
 # keybindings
@@ -31,7 +33,12 @@ def help(mainchar,enemy,weapon):
     print(keybindings)
 
 def inventory(mainchar,enemy,weapon):
-    print(mainchar.items)
+    for key, value in mainchar.items.items():
+        # if items is of weapon class, print its name, otherwise print key
+        if isinstance(key, Weapon):
+            print(key.name)
+        else:
+            print(key)
 
 def character_stats(mainchar,enemy,weapon):
     from pprint import pprint
