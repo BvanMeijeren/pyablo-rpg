@@ -20,8 +20,9 @@ def character_creation():
         ice_def=25, 
         level=1,
         xp=0,
-        enemy_damge=0,
-        skills=[]
+        enemy_damage=0,
+        skills=[],
+        items={'Health Potions': 3}
         )
 
     print('Character created!')
@@ -44,3 +45,5 @@ def create_starterweapon():
         goblin_dmg_bonus=1.2
     )
     return starterweapon
+
+isinstance(1, Weapon)
