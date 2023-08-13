@@ -18,6 +18,6 @@ response = openai.Completion.create(
   max_tokens=50  # You can adjust the length of the response
 )
 
-# Extract and print the AI's response
+# Extract and print_slow the AI's response
 ai_response = response.choices[0].text.strip()
-print("AI:", ai_response)
+print_slow("AI:", ai_response)

@@ -1,15 +1,16 @@
 from characters import Character
+from graphics import *
 from weapons import *
 
 # Character creation
 def character_creation():
-    print('Choose your hero by answering the following questions:')
-    print('What is your hero\'s name?')
+    print_slow('Choose your hero by answering the following questions:')
+    print_slow('What is your hero\'s name?')
     name = input('> ')
-    print('Are you an human, elf, dwarf?')
+    print_slow('Are you an human, elf, dwarf?')
     species = input('> ')
 
-    print('Creating character...')
+    print_slow('Creating character...')
     # character creation with base stats
     mainchar = Character(
         name = name, 
@@ -25,7 +26,7 @@ def character_creation():
         items={'Health Potions': 3}
         )
 
-    print('Character created!')
+    print_slow('Character created!')
     return mainchar
 
 # Start weapon

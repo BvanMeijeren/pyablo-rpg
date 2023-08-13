@@ -1,5 +1,6 @@
 from enemies import enemies
 from enemy_actions import *
+from graphics import *
 import random 
 import os
 from player_actions import *
@@ -12,15 +13,14 @@ def encounter(mainchar, weapon, userinput):
     encounter_ended = False
 
     # encounter intro + options
-    print('A ' + enemy.name + ' has appeared!')
-    print(enemy.name + ' will use ' + '. What will you do?')
+    print_slow('A ' + enemy.name + ' has appeared!')
     print(keybindings)
     
     # encounter instance
     while encounter_ended == False and userinput != 'q':
         # Determine enemy action
         enemy_action = random.choice(enemy_actions)
-        print(enemy.name + ' will use ' + enemy_action + ' next turn.')
+        print_slow(enemy.name + ' will use ' + enemy_action + ' next turn. What will you do?')
 
         
         userinput = input('> ')
@@ -32,13 +32,13 @@ def encounter(mainchar, weapon, userinput):
             encounter_ended = True
         # Check if enemy died
         if enemy.hitpoints <= 0:
-            print(enemy.name + ' was slain, which increased your XP by '+ str(enemy.xp) + '! You venture on...')
+            print_slow(enemy.name + ' was slain, which increased your XP by '+ str(enemy.xp) + '! You venture on...')
             encounter_ended = True
             mainchar.xp = mainchar.xp + enemy.xp # xp reward
 
         # Enemy's turn
         if encounter_ended == False:
             exec(enemy_action+'(mainchar,enemy,weapon)')
-            print(enemy.name + ' hit you for ' + str(round(enemy.enemy_damage)) + ' damage. ' + 
+            print_slow(enemy.name + ' hit you for ' + str(round(enemy.enemy_damage)) + ' damage. ' + 
                   str(round(mainchar.hitpoints)) + ' HP remaining.')
 

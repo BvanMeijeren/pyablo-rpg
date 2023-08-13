@@ -12,4 +12,4 @@ outputs = model.generate(inputs, max_length = 400, do_sample = True, temperature
 
 text = tokenizer.decode(outputs[0], skip_special_tokens = True)
 
-print(text)
+print_slow(text)
