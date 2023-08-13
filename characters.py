@@ -1,10 +1,14 @@
 class Character:
     #stats
-    def __init__(self, name, enemy_damage, level, xp, hitpoints, species, fire_def, ice_def, electricity_def, skills, items):
+    def __init__(self, name, id, enemy_damage, level, xp, hitpoints, critical_chance, critical_multiplier, species, 
+                 fire_def, ice_def, electricity_def, skills, items):
         self.name = name 
+        self.id = id
         self.level = level
         self.xp = xp # for enemies, this is how much you gain upon slaying them
         self.hitpoints = hitpoints
+        self.critical_chance = critical_chance
+        self.critical_multiplier = critical_multiplier
         self.species = species
         self.fire_def = fire_def
         self.ice_def = ice_def

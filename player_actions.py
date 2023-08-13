@@ -1,5 +1,6 @@
 from weapons import *
 from graphics import *
+import random
 
 # To add a function: add a function like the others and add the keybinding
 
@@ -17,11 +18,17 @@ keybindings = {
 # all the first letters of the function names should be unique!
 # all functions should use mainchar, weapon and enemy as parameters
 def healing_potion(mainchar,enemy,weapon):
-    mainchar.hitpoints = mainchar.hitpoints + 25
+    mainchar.hitpoints = mainchar.hitpoints + 25 
     print_slow('You used a healing potion. It gives you +25HP! You now have ' + str(mainchar.hitpoints) + ' HP.' )
 
 def attack(mainchar, enemy, weapon):
-    enemy.hitpoints = enemy.hitpoints - weapon.damage 
+    crit = random.randint(0,100) < mainchar.critical_chance
+    if crit == True:
+        print('Critical hit! Damage X' + str(mainchar.critical_multiplier) + '!')
+        enemy.hitpoints = enemy.hitpoints - (weapon.damage * mainchar.critical_multiplier)
+    elif crit == False:
+        enemy.hitpoints = enemy.hitpoints - weapon.damage
+
     if enemy.hitpoints <=0:
         print_slow('You hit the ' + enemy.name + ' for ' + str(weapon.damage) + '.')
     else:
@@ -40,7 +47,7 @@ def inventory(mainchar,enemy,weapon):
         if isinstance(key, Weapon):
             print_slow(key.name)
         else:
-            print_slow(key + ': ' + value)
+            print_slow(key + ': ' + str(value))
     
     print_slow('--------------')
 

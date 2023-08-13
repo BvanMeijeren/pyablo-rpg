@@ -14,9 +14,12 @@ def character_creation():
     # character creation with base stats
     mainchar = Character(
         name = name, 
+        id = name,
         species = species,
         electricity_def = 25, 
         hitpoints = 100, 
+        critical_chance= 30,
+        critical_multiplier=2,
         fire_def =25, 
         ice_def=25, 
         level=1,
@@ -37,7 +40,6 @@ def create_starterweapon():
         name = 'Noob ' + weapontype,
         damage = random.randint(8, 12),
         type = weapontype,
-        critical_chance = 0.1,
         is_two_handed = False,
         fire_dmg_prop=0,
         electricity_dmg_prop=0,
@@ -47,4 +49,3 @@ def create_starterweapon():
     )
     return starterweapon
 
-isinstance(1, Weapon)

@@ -29,7 +29,7 @@ def generate_weapon(mainchar):
         fire_dmg_prop= dmg_types['Fiery'],
         ice_dmg_prop= dmg_types['Icy'],
         electricity_dmg_prop=dmg_types['Electric'],
-        critical_chance=1,
+        #critical_chance=1,
         is_two_handed=False,
         skeleton_dmg_bonus=1,
         goblin_dmg_bonus=1

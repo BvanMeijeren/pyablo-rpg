@@ -12,6 +12,8 @@ def encounter(mainchar, weapon, userinput):
     enemy = random.choice(enemies)(mainchar, weapon)
     encounter_ended = False
 
+    # print enemy ASCII image
+    print(show_enemy(enemy.id))
     # encounter intro + options
     print_slow('A ' + enemy.name + ' has appeared!')
     print(keybindings)
@@ -30,6 +32,7 @@ def encounter(mainchar, weapon, userinput):
             exec(keybindings[userinput]+'(mainchar, enemy, weapon)') # execute selected player action
         else:
             encounter_ended = True
+
         # Check if enemy died
         if enemy.hitpoints <= 0:
             print_slow(enemy.name + ' was slain, which increased your XP by '+ str(enemy.xp) + '! You venture on...')
@@ -37,8 +40,7 @@ def encounter(mainchar, weapon, userinput):
             mainchar.xp = mainchar.xp + enemy.xp # xp reward
 
         # Enemy's turn
-        if encounter_ended == False:
+        if encounter_ended == False and userinput != 'q':
             exec(enemy_action+'(mainchar,enemy,weapon)')
-            print_slow(enemy.name + ' hit you for ' + str(round(enemy.enemy_damage)) + ' damage. ' + 
-                  str(round(mainchar.hitpoints)) + ' HP remaining.')
+            #print_slow(enemy.name + ' hit you for ' + str(round(enemy.enemy_damage)) + ' damage. ' + str(round(mainchar.hitpoints)) + ' HP remaining.')
 

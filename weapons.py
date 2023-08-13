@@ -1,9 +1,9 @@
 class Weapon:
-  def __init__(self, name, damage, type, critical_chance, is_two_handed, fire_dmg_prop, ice_dmg_prop, electricity_dmg_prop, skeleton_dmg_bonus, goblin_dmg_bonus):
+  def __init__(self, name, damage, type, is_two_handed, fire_dmg_prop, ice_dmg_prop, electricity_dmg_prop, skeleton_dmg_bonus, goblin_dmg_bonus):
     self.name = name
     self.damage = damage
     self.type = type
-    self.critical_chance = critical_chance
+    #self.critical_chance = critical_chance
     self.is_two_handed = is_two_handed
     self.fire_dmg_prop = fire_dmg_prop
     self.ice_dmg_prop = ice_dmg_prop
