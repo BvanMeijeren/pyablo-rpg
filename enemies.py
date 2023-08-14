@@ -15,9 +15,9 @@ def create_skeleton(mainchar, weapon):
         fire_def=0,
         ice_def=20,
         electricity_def=40,
-        enemy_damage=weapon.damage * 0.5,
+        enemy_damage=10,
         skills=[],
-        items={}
+        items={'Health Potions': 0}
         )
     
     return skeleton
@@ -36,9 +36,9 @@ def create_ice_elemental(mainchar,weapon):
         fire_def=0,
         ice_def=80,
         electricity_def=40,
-        enemy_damage= weapon.damage*0.6,
+        enemy_damage= 12,
         skills=[],
-        items={}
+        items={'Health Potions': 0}
         )
     
     return ice_elemental
@@ -47,7 +47,7 @@ def create_ice_elemental(mainchar,weapon):
 def create_goblin(mainchar,weapon):
     goblin = Character(
         name = 'Goblin Intern',
-        id = 'goblin_intern',
+        id = 'goblin',
         level = 1,
         xp = 50,
         hitpoints = 25, 
@@ -57,9 +57,9 @@ def create_goblin(mainchar,weapon):
         fire_def=0,
         ice_def=80,
         electricity_def=40,
-        enemy_damage=weapon.damage*0.4,
+        enemy_damage= 8,
         skills = ['niffle'],
-        items={}
+        items={'Health Potions': 0}
         )
     
     return goblin

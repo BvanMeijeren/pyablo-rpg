@@ -1,5 +1,7 @@
 from weapons import *
 from graphics import *
+from damage_calculator import *
+from spells import *
 import random
 
 # To add a function: add a function like the others and add the keybinding
@@ -7,8 +9,9 @@ import random
 # keybindings
 keybindings = {
     '1': 'attack',
-    '2': 'healing_potion',
-    '3': 'defend',
+    '2': 'defend',
+    '3': 'cast_spell',
+    '4': 'healing_potion',
     'h': 'help',
     'i': 'inventory',
     'c': 'character_stats',
@@ -22,23 +25,29 @@ def healing_potion(mainchar,enemy,weapon):
     print_slow('You used a healing potion. It gives you +25HP! You now have ' + str(mainchar.hitpoints) + ' HP.' )
 
 def attack(mainchar, enemy, weapon):
-    crit = random.randint(0,100) < mainchar.critical_chance
-    if crit == True:
-        print('Critical hit! Damage X' + str(mainchar.critical_multiplier) + '!')
-        enemy.hitpoints = enemy.hitpoints - (weapon.damage * mainchar.critical_multiplier)
-    elif crit == False:
-        enemy.hitpoints = enemy.hitpoints - weapon.damage
+    damage_calculated = damage_calculator(mainchar, enemy, weapon.physical_dmg, 
+                                          weapon.fire_dmg, weapon.ice_dmg, weapon.electricity_dmg)
+    enemy.hitpoints = enemy.hitpoints - damage_calculated
 
     if enemy.hitpoints <=0:
-        print_slow('You hit the ' + enemy.name + ' for ' + str(weapon.damage) + '.')
+        print_slow('You hit the ' + enemy.name + ' for ' + str(damage_calculated) + '.')
     else:
-        print_slow('You hit the ' + enemy.name + ' for ' + str(weapon.damage) + '! It has ' + str(enemy.hitpoints) + ' HP left.')
+        print_slow('You hit the ' + enemy.name + ' for ' + str(damage_calculated) + '! It has ' + str(enemy.hitpoints) + ' HP left.')
+
+
+def cast_spell(mainchar,enemy,weapon):
+    spell = input('Spell:')
+    print(spell)
+    exec(spell + '(mainchar,enemy,weapon)')
+
 
 def defend(mainchar,enemy,weapon):
     print_slow('You brace yourself for the next hit, reducing its damage by 50% -- WIP!')
 
+
 def help(mainchar,enemy,weapon):
     print(keybindings)
+
 
 def inventory(mainchar,enemy,weapon):
     print_slow('--------------')
@@ -51,10 +60,12 @@ def inventory(mainchar,enemy,weapon):
     
     print_slow('--------------')
 
+
 def character_stats(mainchar,enemy,weapon):
     from pprint import pprint
     pprint(vars(mainchar))
 
+
 def inspect_enemy(mainchar,enemy,weapon):
-    from pprint import pprint_slow
-    pprint_slow(vars(enemy))
+    from pprint import pprint
+    pprint(vars(enemy))

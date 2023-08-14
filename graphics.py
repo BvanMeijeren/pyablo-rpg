@@ -58,7 +58,9 @@ goblin = """
 ⠘⢧⡄⣤⣤⢠⡟⣸⣿⣿⣧⣀⣠⣜⣠⣤⣼⣿⡇⠸⢃⣼⡄⢃⣼⠃⣤⣿⣿
 """
 
-images = [skeleton, ice_elemental, goblin]
+# Store all images in the below dictionary, so that other scripts can retrieve them by key
+images = {'skeleton': skeleton, 'ice_elemental': ice_elemental, 'goblin': goblin}
 
 def show_enemy(enemy_id):
     return images[enemy_id]
+

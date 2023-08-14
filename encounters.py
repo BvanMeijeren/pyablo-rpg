@@ -1,5 +1,5 @@
 from enemies import enemies
-from enemy_actions import *
+from spells import *
 from graphics import *
 import random 
 import os
@@ -15,21 +15,29 @@ def encounter(mainchar, weapon, userinput):
     # print enemy ASCII image
     print(show_enemy(enemy.id))
     # encounter intro + options
-    print_slow('A ' + enemy.name + ' has appeared!')
+    print_slow('A ' + enemy.name + ' (' + str(enemy.hitpoints) +' HP) has appeared!')
     print(keybindings)
     
     # encounter instance
     while encounter_ended == False and userinput != 'q':
         # Determine enemy action
-        enemy_action = random.choice(enemy_actions)
+        enemy_action = random.choice(spells) # random pick from skill dict keys
         print_slow(enemy.name + ' will use ' + enemy_action + ' next turn. What will you do?')
 
-        
+        # Player's turn
+        player_turn_over = False
+        # Boolean to determine if player is still alive
+        you_are_dead = False
+        # Initial user input for player's turn
         userinput = input('> ')
 
-        # Player's turn
         if userinput != 'q':
-            exec(keybindings[userinput]+'(mainchar, enemy, weapon)') # execute selected player action
+            while player_turn_over == False:
+                exec(keybindings[userinput]+'(mainchar, enemy, weapon)') # execute selected player action
+                if userinput in ['h','i','c','e']:
+                    userinput = input('> ')
+                else:
+                    player_turn_over = True
         else:
             encounter_ended = True
 
@@ -41,6 +49,14 @@ def encounter(mainchar, weapon, userinput):
 
         # Enemy's turn
         if encounter_ended == False and userinput != 'q':
-            exec(enemy_action+'(mainchar,enemy,weapon)')
-            #print_slow(enemy.name + ' hit you for ' + str(round(enemy.enemy_damage)) + ' damage. ' + str(round(mainchar.hitpoints)) + ' HP remaining.')
+            exec(enemy_action+'(enemy,mainchar,weapon)')
+
+        # check if player died
+        if mainchar.hitpoints <= 0:
+            encounter_ended= True 
+            print('Lol, you have been pwned by a ' + enemy.name + '. Try again.')
+            you_are_dead = True
+            
+    return you_are_dead
+            
 

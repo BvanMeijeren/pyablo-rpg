@@ -23,4 +23,4 @@ def generate_loot(mainchar):
     if health_potion_drop_bool == True:
         mainchar.items['Health Potions'] += int(1) # add one potion
         print_slow('You have found a Health Potion!')
-        print_slow('Press enter to continue...')
+

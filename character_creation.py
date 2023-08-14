@@ -38,12 +38,12 @@ def create_starterweapon():
     weapontype = random.choice(weapontypes)
     starterweapon = Weapon(
         name = 'Noob ' + weapontype,
-        damage = random.randint(8, 12),
         type = weapontype,
         is_two_handed = False,
-        fire_dmg_prop=0,
-        electricity_dmg_prop=0,
-        ice_dmg_prop=0,
+        physical_dmg = random.randint(8,13),
+        fire_dmg=0,
+        electricity_dmg=0,
+        ice_dmg=0,
         skeleton_dmg_bonus= 1.1,
         goblin_dmg_bonus=1.2
     )

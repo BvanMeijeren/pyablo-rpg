@@ -25,14 +25,14 @@ def generate_weapon(mainchar):
         # name = dmg type + weapon type (added below)
         name = str({i for i in dmg_types if dmg_types[i]==1}), 
         type= random.choice(weapontypes),
-        damage = round(random.randint(8,13) * float('1.' + str(mainchar.level)),1),
-        fire_dmg_prop= dmg_types['Fiery'],
-        ice_dmg_prop= dmg_types['Icy'],
-        electricity_dmg_prop=dmg_types['Electric'],
+        physical_dmg = round(random.randint(8,13) * float('1.' + str(mainchar.level)),1),
+        fire_dmg = dmg_types['Fiery'],
+        ice_dmg = dmg_types['Icy'],
+        electricity_dmg = dmg_types['Electric'],
         #critical_chance=1,
-        is_two_handed=False,
-        skeleton_dmg_bonus=1,
-        goblin_dmg_bonus=1
+        is_two_handed = False,
+        skeleton_dmg_bonus = 1,
+        goblin_dmg_bonus = 1
 
     )
 
