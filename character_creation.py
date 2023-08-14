@@ -1,4 +1,5 @@
 from characters import Character
+#from colorama import Fore, Back, Style
 from graphics import *
 from weapons import *
 
@@ -13,7 +14,7 @@ def character_creation():
     print_slow('Creating character...')
     # character creation with base stats
     mainchar = Character(
-        name = name, 
+        name = Fore.CYAN + name + Style.RESET_ALL, 
         id = name,
         species = species,
         electricity_def = 25, 
@@ -26,7 +27,7 @@ def character_creation():
         xp=0,
         enemy_damage=0,
         skills=[],
-        items={'Health Potions': 3}
+        items={'Health Potions': 3} # starter items
         )
 
     print_slow('Character created!')
@@ -37,7 +38,7 @@ def create_starterweapon():
     import random 
     weapontype = random.choice(weapontypes)
     starterweapon = Weapon(
-        name = 'Noob ' + weapontype,
+        name = Fore.LIGHTMAGENTA_EX + 'Noob ' + weapontype + Style.RESET_ALL,
         type = weapontype,
         is_two_handed = False,
         physical_dmg = random.randint(8,13),

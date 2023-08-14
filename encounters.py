@@ -4,6 +4,7 @@ from graphics import *
 import random 
 import os
 from player_actions import *
+from colorama import Fore, Back, Style
 
 # encounter function
 def encounter(mainchar, weapon, userinput):
@@ -22,7 +23,8 @@ def encounter(mainchar, weapon, userinput):
     while encounter_ended == False and userinput != 'q':
         # Determine enemy action
         enemy_action = random.choice(spells) # random pick from skill dict keys
-        print_slow(enemy.name + ' will use ' + enemy_action + ' next turn. What will you do?')
+        print_slow(enemy.name + ' will use ' + Fore.LIGHTYELLOW_EX + enemy_action + Style.RESET_ALL + 
+                   ' next turn. What will you do?')
 
         # Player's turn
         player_turn_over = False

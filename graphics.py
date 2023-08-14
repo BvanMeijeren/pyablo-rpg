@@ -1,4 +1,5 @@
 import sys,time,random
+from colorama import Fore, Back, Style
 
 def print_slow(str):
     for i in str + '\n':
@@ -8,7 +9,7 @@ def print_slow(str):
     
     time.sleep(0.4)
 
-skeleton = """
+skeleton = Fore.WHITE + """
       .-.
      (o.o)
       |=|
@@ -23,8 +24,9 @@ skeleton = """
      || ||
      || ||
     ==' '==
-"""
-ice_elemental = """
+""" + Style.RESET_ALL
+
+ice_elemental = Fore.LIGHTBLUE_EX + """
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⣤⡄⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣧⡀⢀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠉⠁⢀⣀⠀⢲⣿⠋⣀⠙⠛⠛⠋⣁⡀⢻⣿⠟⢠⣤⣀⠀⠀⠀⠀⠀⠀
@@ -40,9 +42,9 @@ ice_elemental = """
 ⠀⠀⠀⠀⠀⠀⠀⠀⠁⡀⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣦⠈⠁⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⣾⣧⣤⡆⢰⣷⣿⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣷⡄⣶⣶⣤⡴⠀⠀
 ⠀⠀⠀⠀⠉⠉⠉⠁⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠉⠉⠁⠀⠀
-"""
+""" + Style.RESET_ALL
 
-goblin = """
+goblin = Fore.GREEN + """
               ⣠⠤⢶⣿⣿⣿⡿⠋⠛⢻⣷⣤
            ⣠⠶⣏⣀⣼⣿⣿⣿⣷⣄⣀⣈⣿⡿⢷⡀
    ⢠⠤⠤⠤⠠⠾⠷⠾⠿⣿⣿⠿⠛⠛⠛⠛⣛⣋⣉⣁⡀⢳⡀
@@ -56,7 +58,7 @@ goblin = """
   ⣴⡃⣿⡿⢡⣆⢉⣛⣩⣭⣤⣶⣶⣦⣬⣭⣥⣶⡶⠇⣿⡟⢰⣷⡌⣿⣷
 ⢀⠻⡇⠛⢃⡟⣿⢰⣌⢙⠻⠿⢿⣿⡿⢻⠟⣁⠉⢡⡆⠋⠞⣸⠟⡁⠉⣿⣧
 ⠘⢧⡄⣤⣤⢠⡟⣸⣿⣿⣧⣀⣠⣜⣠⣤⣼⣿⡇⠸⢃⣼⡄⢃⣼⠃⣤⣿⣿
-"""
+""" + Style.RESET_ALL
 
 # Store all images in the below dictionary, so that other scripts can retrieve them by key
 images = {'skeleton': skeleton, 'ice_elemental': ice_elemental, 'goblin': goblin}

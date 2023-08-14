@@ -1,10 +1,11 @@
 from characters import *
+from colorama import Fore, Back, Style
 import random
 
 # Skeleton
 def create_skeleton(mainchar, weapon):
     skeleton = Character(
-        name = 'Broken Skeleton',
+        name = Fore.RED + 'Broken Skeleton' + Style.RESET_ALL,
         id = 'skeleton', # used to match the right image
         level = mainchar.level,
         xp =50,
@@ -25,7 +26,7 @@ def create_skeleton(mainchar, weapon):
 # Ice elemental
 def create_ice_elemental(mainchar,weapon):
     ice_elemental = Character(
-        name = 'Ice Elemental',
+        name = Fore.RED + 'Ice Elemental' + Style.RESET_ALL,
         id = 'ice_elemental',
         level = mainchar.level,
         xp = 50,
@@ -46,7 +47,7 @@ def create_ice_elemental(mainchar,weapon):
 # Goblin
 def create_goblin(mainchar,weapon):
     goblin = Character(
-        name = 'Goblin Intern',
+        name = Fore.RED + 'Goblin Intern' + Style.RESET_ALL,
         id = 'goblin',
         level = 1,
         xp = 50,
