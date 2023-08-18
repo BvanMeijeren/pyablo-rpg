@@ -2,6 +2,7 @@ from graphics import *
 from encounters import *
 from level_up import *
 from lootgenerator import *
+from mapgenerator import *
 import os
 
 def game_engine(mainchar, weapon):
@@ -17,6 +18,13 @@ def game_engine(mainchar, weapon):
 
     while userinput != 'q':
         userinput = input('> ')
+
+        # generate a map
+        map_structure = generate_map
+        trail = {}
+
+        # choose where to go
+        
 
         # Create encounter, check if player is still alive
         os.system('cls')
