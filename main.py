@@ -9,6 +9,8 @@ def game_engine(mainchar, weapon):
     print_slow('You wake up in the forest, without a memory of how you got there.')
     print_slow('You feel like you are level 1 in a text-based RPG and have the sudden urge to kill monsters and collect shiny things.')
     print_slow('Press enter to start your journey.')
+    time.sleep(1.0)
+
 
     userinput = 'y'
     you_are_dead = False
@@ -16,6 +18,7 @@ def game_engine(mainchar, weapon):
     while userinput != 'q':
         userinput = input('> ')
 
+        os.system('cls')
         # Create encounter, check if player is still alive
         you_are_dead = encounter(mainchar, weapon, userinput)
 

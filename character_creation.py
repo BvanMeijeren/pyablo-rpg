@@ -26,6 +26,8 @@ def character_creation():
         level=1,
         xp=0,
         enemy_damage=0,
+        equipped_weapon=None,
+        profession = '',
         skills=[],
         items={'Health Potions': 3} # starter items
         )

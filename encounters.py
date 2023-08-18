@@ -13,6 +13,9 @@ def encounter(mainchar, weapon, userinput):
     enemy = random.choice(enemies)(mainchar, weapon)
     encounter_ended = False
 
+    # Boolean to determine if player is still alive
+    you_are_dead = False
+
     # print enemy ASCII image
     print(show_enemy(enemy.id))
     # encounter intro + options
@@ -28,8 +31,7 @@ def encounter(mainchar, weapon, userinput):
 
         # Player's turn
         player_turn_over = False
-        # Boolean to determine if player is still alive
-        you_are_dead = False
+
         # Initial user input for player's turn
         userinput = input('> ')
 

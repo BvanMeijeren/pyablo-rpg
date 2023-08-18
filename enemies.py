@@ -13,12 +13,14 @@ def create_skeleton(mainchar, weapon):
         critical_chance= 20,
         critical_multiplier=2,
         species = 'Skeleton',
-        fire_def=0,
+        fire_def=-30,
         ice_def=20,
         electricity_def=40,
         enemy_damage=10,
         skills=[],
-        items={'Health Potions': 0}
+        items={'Health Potions': 0},
+        equipped_weapon=None,
+        profession=''
         )
     
     return skeleton
@@ -34,12 +36,14 @@ def create_ice_elemental(mainchar,weapon):
         critical_chance= 20,
         critical_multiplier=2,
         species = 'Elemental',
-        fire_def=0,
-        ice_def=80,
-        electricity_def=40,
+        fire_def=-100,
+        ice_def=100,
+        electricity_def=50,
         enemy_damage= 12,
         skills=[],
-        items={'Health Potions': 0}
+        items={'Health Potions': 0},
+        equipped_weapon=None,
+        profession=''
         )
     
     return ice_elemental
@@ -55,12 +59,14 @@ def create_goblin(mainchar,weapon):
         critical_chance= 20,
         critical_multiplier=2,
         species = 'Goblin',
-        fire_def=0,
-        ice_def=80,
-        electricity_def=40,
+        fire_def=-50,
+        ice_def=30,
+        electricity_def=0,
         enemy_damage= 8,
         skills = ['niffle'],
-        items={'Health Potions': 0}
+        items={'Health Potions': 0},
+        equipped_weapon=None,
+        profession=''
         )
     
     return goblin
