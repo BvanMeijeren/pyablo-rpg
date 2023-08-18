@@ -19,27 +19,27 @@
 # ok.pack(fill='x', side='left')
 
 # m.mainloop()
+######################
+# from tkinter import *
 
-from tkinter import *
+# def sel():
+#    selection = "You selected the option " + str(var.get())
+#    label.config(text = selection)
 
-def sel():
-   selection = "You selected the option " + str(var.get())
-   label.config(text = selection)
+# root = Tk()
+# var = StringVar()
+# R1 = Radiobutton(root, text="Knight", variable=var, value='Knight',
+#                   command=sel)
+# R1.pack( anchor = W )
 
-root = Tk()
-var = StringVar()
-R1 = Radiobutton(root, text="Knight", variable=var, value='Knight',
-                  command=sel)
-R1.pack( anchor = W )
+# R2 = Radiobutton(root, text="Mage", variable=var, value='Mage',
+#                   command=sel)
+# R2.pack( anchor = W )
 
-R2 = Radiobutton(root, text="Mage", variable=var, value='Mage',
-                  command=sel)
-R2.pack( anchor = W )
+# R3 = Radiobutton(root, text="Rogue", variable=var, value='Rogue',
+#                   command=sel)
+# R3.pack( anchor = W)
 
-R3 = Radiobutton(root, text="Rogue", variable=var, value='Rogue',
-                  command=sel)
-R3.pack( anchor = W)
-
-label = Label(root)
-label.pack()
-root.mainloop()
+# label = Label(root)
+# label.pack()
+# root.mainloop()
