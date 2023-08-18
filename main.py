@@ -18,8 +18,8 @@ def game_engine(mainchar, weapon):
     while userinput != 'q':
         userinput = input('> ')
 
-        os.system('cls')
         # Create encounter, check if player is still alive
+        os.system('cls')
         you_are_dead = encounter(mainchar, weapon, userinput)
 
         if you_are_dead == False:
