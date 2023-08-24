@@ -3,6 +3,7 @@ from encounters import *
 from level_up import *
 from lootgenerator import *
 from mapgenerator import *
+from map_navigator import *
 import os
 
 def game_engine(mainchar, weapon):
@@ -15,16 +16,23 @@ def game_engine(mainchar, weapon):
 
     userinput = 'y'
     you_are_dead = False
+    trail = [] # choices made by player in the current map
+    map_structure = []
 
     while userinput != 'q':
         userinput = input('> ')
 
         # generate a map
-        map_structure = generate_map
-        trail = {}
+        if all(p == 0 for p in trail): # if trail is only zeroes, generate new map
+            map_structure = generate_map_structure(mainchar) 
+        else: # else continue on current one
+            navigate_map()
+
+
+        
 
         # choose where to go
-        
+
 
         # Create encounter, check if player is still alive
         os.system('cls')

@@ -44,3 +44,6 @@
 # label.pack()
 # root.mainloop()
 
+x = {1:2}
+
+print( list(x.keys()) )

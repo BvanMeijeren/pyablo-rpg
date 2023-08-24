@@ -1,91 +1,90 @@
 import random
 from colorama import Fore, Back, Style
 
-def generate_map(mainchar):
+def generate_map_structure(mainchar):
     # map length determines the number of moves the player have to make before entering the next map
-    map_length = mainchar + 5
+    map_length = mainchar.level + 5
 
-    map_structure = {}
+    map_structure = [] # indicates for every position in the map how many options there are/were
+
+    # default value for the 
     for i in range(1,map_length):
-        map_structure[i] = 'default'
+        map_structure[i] = 1 # default single path 
 
     # based on player level, determine how many decision there will be
     decisions = random.randint(1,round(map_length*0.2))
-    decision_indices = []
 
     # set positions of the events
     for i in range(decisions):
         pos = random.randint(2,map_length) # first position cannot be split
-        map_structure[pos] = 'event'
+        map_structure[pos] = random.randint(2,3)
 
     return map_structure
 
+def visualize_vertical_map(map_structure, player_trail):
+    
+    vertices = []
 
-print(generate_map(2))
-
-def visualize_map(map_structure):
-    first_line = ''
-    second_line = ''
-    third_line = ''
-    fourth_line = ''
-    fifth_line = ''
-
-    lines = [first_line, second_line, third_line, fourth_line, fifth_line]
-
-    # player trail through map
-    trail = {2:1}
-
-    index = 1
+    # add vertices
     for i in map_structure:
         if i == 1:
-            lines = [item + '  ' for item in lines]
-            lines[2] = lines[2][:-2] + ' O' # only third line gets node
-        if i == 2:
-            lines[0] = lines[0] + ' O'
-            lines[1] = lines[1] + '  '
-            lines[2] = lines[2] + '  '
-            lines[3] = lines[3] + '  '
-            lines[4] = lines[4] + ' O'
-        if i == 3:
-            lines[0] = lines[0] + ' O'
-            lines[1] = lines[1] + '  '
-            lines[2] = lines[2] + ' O'
-            lines[3] = lines[3] + '  '
-            lines[4] = lines[4] + ' O'
+            vertices.append('  O  ')
+        elif i == 2:
+            vertices.append('O   O')
+        elif i == 3:
+            vertices.append('O O O')
 
-        if index == 2:
-            lines[0] = lines[0][:-1] + 'X'
-        index += 1
-
-    # draw vertices
-    # draw ascending vertices
-    for i in range(len(lines[2])-2):
-        if lines[2][i] in ['O','X'] and lines[0][i+2] in ['O','X']: #and lines[0][i] != 'O':
-            lines[1] = lines[1][:i+1] + '/' + lines[1][i:]
-            lines[3] = lines[3][:i+1] + '\\' + lines[3][i:]
-    # draw descending vertices
-    for i in range(2,len(lines[2])):
-        if lines[2][i] in ['O', 'X'] and lines[0][i-2] in ['O', 'X'] and lines[0][i] not in ['O', 'X']:
-            lines[1] = lines[1][:i-1] + '\\' + lines[1][i:]
-            lines[3] = lines[3][:i-1] + '/' + lines[3][i:]
-        
-    # Insert End text = player position
-    lines[2] = (lines[2] + Fore.RED + ' END' + Style.RESET_ALL + 
-                '            Your are here: ' + Fore.YELLOW + 'X' + Style.RESET_ALL)
-
-    # draw player trail
-
-    for i in range(len(lines)):
-        lines[i] = lines[i].replace('O O', 'O-O').replace('O O', 'O-O').replace('X O', 'X-O').replace('O X', 'O-X')
-
-        # add start text
-        if i == 2:
-            lines[i] = Fore.GREEN + 'Start' + Style.RESET_ALL + lines[i] 
-        else:
-            lines[i] = '     ' + lines[i]
-        
-        # print lines one by one
-        print(lines[i])
+    # correct indices of player trail so that choice places match string indices
+    for key,value in player_trail.items():
+        if value == 1:
+            player_trail[key] = 0
+        elif value == 3:
+            player_trail[key] = 4
 
 
-visualize_map([1,3,2,1,2,1,1,3,1,1,1])
+    # Visualize player position X (without colors, because those mess up the edges)
+    current_pos = max(list(player_trail.keys()))
+    current_node = player_trail[current_pos]
+
+    vertices[current_pos] = vertices[current_pos][:current_node] + 'X' + vertices[current_pos][current_node+1:]
+
+    edges = []
+
+    # add edges
+    for index in range(len(map_structure)-1):
+
+        line_to_be_added = '     '
+
+        # get all indices for vertices in strings
+        prev_vertices = [i for i, ltr in enumerate(vertices[index]) if ltr in ['O', 'X']]
+        next_vertices = [i for i, ltr in enumerate(vertices[index+1]) if ltr in ['O','X']]
+
+        for y in prev_vertices:
+            if y in next_vertices:
+                line_to_be_added = line_to_be_added[:y] + '|' + line_to_be_added[y+1:]
+            if y + 2 in next_vertices:
+                line_to_be_added = line_to_be_added[:y+1] + '\\' + line_to_be_added[y+2:]
+            if y - 2 in next_vertices:
+                line_to_be_added = line_to_be_added[:y-1] + '/' + line_to_be_added[y:]
+
+        edges.append(line_to_be_added)
+
+    edges.append('')
+
+    # print the colored map
+    print(Fore.GREEN + 'START' + Style.RESET_ALL)
+    for i in range(len(vertices)):
+        # color the map
+        if i in list(player_trail.keys()):
+            player_choice = player_trail[i]
+            to_be_printed_line = vertices[i]
+            vertices[i] = (to_be_printed_line[:player_choice] + Fore.BLUE + to_be_printed_line[player_choice] 
+                           + Style.RESET_ALL + to_be_printed_line[player_choice+1:])
+
+        print(vertices[i])
+        if i < len(edges) and edges[i] != '':
+            print(edges[i])
+
+    print(' ' + Fore.RED + 'BOSS' + Style.RESET_ALL)
+
+visualize_vertical_map([1,2,3,1], {0:2,1:1,2:1})
