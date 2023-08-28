@@ -16,14 +16,14 @@ def game_engine(mainchar, weapon):
 
     userinput = 'y'
     you_are_dead = False
-    trail = [] # choices made by player in the current map
+    trail = {} # choices made by player in the current map
     map_structure = []
 
     while userinput != 'q':
         userinput = input('> ')
 
         # generate a map
-        if all(p == 0 for p in trail): # if trail is only zeroes, generate new map
+        if trail == {}: # if trail is only empty, generate new map
             map_structure = generate_map_structure(mainchar) 
         else: # else continue on current one
             navigate_map()
