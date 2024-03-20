@@ -16,6 +16,7 @@ def start_game():
         print_slow('Starting a new game...')
         time.sleep(1.0)
         os.system('cls')
+        
         # Character creation menu
         mainchar = character_creation()
         time.sleep(1.0)

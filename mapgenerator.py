@@ -3,21 +3,21 @@ from colorama import Fore, Back, Style
 
 def generate_map_structure(mainchar):
     # map length determines the number of moves the player have to make before entering the next map
-    map_length = mainchar.level + 5
+    map_length = 4
 
-    map_structure = [] # indicates for every position in the map how many options there are/were
-
-    # default value for the 
-    for i in range(1,map_length):
-        map_structure[i] = 1 # default single path 
+    map_structure = [1] # indicates for every position in the map how many options there are/were
 
     # based on player level, determine how many decision there will be
-    decisions = random.randint(1,round(map_length*0.2))
+    decisions = random.randint(1,round(map_length*0.2))+1
+
 
     # set positions of the events
-    for i in range(decisions):
-        pos = random.randint(2,map_length) # first position cannot be split
-        map_structure[pos] = random.randint(2,3)
+    for i in range(map_length):
+        #pos = random.randint(2,map_length) # first position cannot be split
+        nr = random.randint(2,3)
+        map_structure.append( nr )
+
+    map_structure.append(1)
 
     return map_structure
 

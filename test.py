@@ -42,8 +42,25 @@
 
 # label = Label(root)
 # label.pack()
-# root.mainloop()
+#  root.mainloop()
 
-x = {1:2}
+import random
 
-print( list(x.keys()) )
+# map length determines the number of moves the player have to make before entering the next map
+map_length = 4
+
+map_structure = [1] # indicates for every position in the map how many options there are/were
+
+# based on player level, determine how many decision there will be
+decisions = random.randint(1,round(map_length*0.2))+1
+
+
+# set positions of the events
+for i in range(map_length):
+    #pos = random.randint(2,map_length) # first position cannot be split
+    nr = random.randint(2,3)
+    map_structure.append( nr )
+
+map_structure.append(1)
+
+print(map_structure)
