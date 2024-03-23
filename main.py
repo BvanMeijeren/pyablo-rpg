@@ -16,26 +16,31 @@ def game_engine(mainchar, weapon):
 
     userinput = 'y'
     you_are_dead = False
-    trail = {0:2} # choices made by player in the current map
+    trail = {} # choices made by player in the current map
     map_structure = []
 
     while userinput != 'q':
         userinput = input('> ')
 
         # generate a map
-        if trail == {0:2}: # if trail is only empty, generate new map
+        if trail == {}: # if trail is only empty, generate new map
+            trail = {0:2}
             print('Generating new map...')
             map_structure = generate_map_structure(mainchar) 
             visualize_vertical_map(map_structure, trail)
-            print('You set out to traverse the lands laid out before you...')
-        else: # else continue on current one
+            print('You set out to traverse the lands ahead...')
+            input('Press enter to continue.')
+            os.system('cls')
+        # else continue on current one
+        else: 
+            visualize_vertical_map(map_structure, trail)
             navigate_map(map_structure, trail)
             # choose where to go
             
 
 
         # Create encounter, check if player is still alive
-        os.system('cls')
+        #os.system('cls')
         you_are_dead = encounter(mainchar, weapon, userinput)
 
         if you_are_dead == False:
@@ -46,6 +51,7 @@ def game_engine(mainchar, weapon):
             level_up(mainchar)
         else:
             userinput = 'q'
+
         
 
     print_slow('Exiting game...')

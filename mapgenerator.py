@@ -87,4 +87,4 @@ def visualize_vertical_map(map_structure, player_trail):
 
     print(' ' + Fore.RED + 'BOSS' + Style.RESET_ALL)
 
-visualize_vertical_map([1,2,3,1], {0:2,1:1,2:1})
+#visualize_vertical_map([1,2,3,1], {0:2,1:1,2:2})
