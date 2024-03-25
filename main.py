@@ -34,10 +34,9 @@ def game_engine(mainchar, weapon):
         # else continue on current one
         else: 
             visualize_vertical_map(map_structure, trail)
-            navigate_map(map_structure, trail)
             # choose where to go
+            navigate_map(map_structure, trail)
             
-
 
         # Create encounter, check if player is still alive
         #os.system('cls')

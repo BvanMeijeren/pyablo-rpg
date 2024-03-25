@@ -43,14 +43,14 @@ def navigate_map(map_structure, trail):
             nav_options_string = nav_options_string + str(i) + ' '
         count += 1
 
-    visualize_vertical_map(map_structure, trail)
+    
     print('Choose your next path: Will it be path ' + nav_options_string + '?')
     next_step = input('> ')
 
     # add the new step to the player's trail
-    trail[current_step] = int(next_step)
+    trail[nr_steps_made+1] = int(next_step)
 
     print(trail)
     visualize_vertical_map(map_structure, trail)
 
-navigate_map([1,2,3,2,3,1], {0:2,1:3,2:2})
+#navigate_map([1,2,3,3,3,1], {0:2,1:3})
